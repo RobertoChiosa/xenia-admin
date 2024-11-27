@@ -54,5 +54,54 @@ class HostAdmin(admin.ModelAdmin):
     ]
 
 
+class PropertyAdmin(admin.ModelAdmin):
+    list_display = ["name", "address"]
+
+    fieldsets = [
+        (
+            _("Anagrafica"),
+            {
+                "fields": [
+                    "name",
+                    "description",
+                    "address",
+                    "city",
+                    "state",
+                    "zipcode",
+                ],
+                # "classes": ["collapse"]
+            },
+        ),
+        (
+            _("Visura Catastale"),
+            {
+                "fields": [
+                   "cadastral_income",
+                   "cadastral_category",
+                   "cadastral_subcategory",
+                   "cadastral_particle",
+                   "cadastral_subparticle",
+                   "cadastral_zone",
+                   "cadastral_quarter",
+                   "cadastral_area",
+                   "cadastral_map",
+                   "cadastral_sheet",
+                ],
+                "classes": ["collapse"]
+            },
+        ),
+        (
+            _("APE"),
+            {
+                "fields": [
+                    "energy_performance_certificate",
+                ],
+                # "classes": ["collapse"]
+            },
+        ),
+
+    ]
+
+
 admin.site.register(Host, HostAdmin)
-admin.site.register(Property)
+admin.site.register(Property, PropertyAdmin)
