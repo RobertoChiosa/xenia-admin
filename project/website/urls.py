@@ -6,5 +6,5 @@ from . import views
 
 urlpatterns = [
     path("", views.index),
-    path("host_id/", views.host_upload),
+    path("/explore", views.explore),
 ]
