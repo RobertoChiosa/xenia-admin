@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
+from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -36,7 +37,9 @@ INSTALLED_APPS = [
     # "unfold.contrib.filters",
     # "unfold.contrib.forms",
     # "unfold.contrib.simple_history",
+    'modeltranslation',
     "management.apps.ManagementConfig",
+    "website.apps.WebsiteConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -114,6 +117,13 @@ LANGUAGE_CODE = "it-it"
 TIME_ZONE = "Europe/Rome"
 
 USE_I18N = True
+
+LANGUAGES = (
+    ("it", _("Italian")),
+    ("en", _("English")),
+)
+
+MODELTRANSLATION_LANGUAGES = ('it', 'en')
 
 USE_TZ = True
 

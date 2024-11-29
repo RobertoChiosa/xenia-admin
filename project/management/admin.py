@@ -1,12 +1,17 @@
 from django.contrib import admin
-
-from .models import Host, Property
 from django.utils.translation import gettext as _
+
+from .models import Host, Property, CadastralData, Citizenship
+
+
+class CitizenshipInline(admin.StackedInline):
+    model = Citizenship
+    extra = 1
+
 
 class HostAdmin(admin.ModelAdmin):
     search_fields = ["name"]
-    list_display = ["name", "surname", "email"]
-
+    list_display = ["name", "surname", "email", "fiscal_code"]
     fieldsets = [
         (
             None,
@@ -26,16 +31,7 @@ class HostAdmin(admin.ModelAdmin):
                     "birth_place",
                     "citizenship",
                     "fiscal_code",
-                ],
-                # "classes": ["collapse"]
-            },
-        ),
-        (
-            _("Residenza"),
-            {
-                "fields": [
                     "residence_address",
-                    "residence_city", "residence_zipcode" ,"residence_state",
                 ],
                 # "classes": ["collapse"]
             },
@@ -43,19 +39,38 @@ class HostAdmin(admin.ModelAdmin):
         (
             _("Documenti"),
             {
-                "fields": [
-                    "id_card_front",
-                    "id_card_back"
-                ],
+                "fields": ["id_card_front", "id_card_back"],
                 # "classes": ["collapse"]
             },
         ),
-
     ]
+
+
+class CadastralDataInline(admin.StackedInline):
+    model = CadastralData
+    extra = 1
+
+
+class CadastralDataAdmin(admin.ModelAdmin):
+    list_display = [
+        "property",
+        "income",
+        "category",
+        "subcategory",
+        "particle",
+        "subparticle",
+        "zone",
+        "quarter",
+        "area",
+        "volume",
+        "coordinates",
+    ]
+    search_fields = ["property"]
 
 
 class PropertyAdmin(admin.ModelAdmin):
     list_display = ["name", "address"]
+    inlines = [CadastralDataInline]
 
     fieldsets = [
         (
@@ -73,24 +88,6 @@ class PropertyAdmin(admin.ModelAdmin):
             },
         ),
         (
-            _("Visura Catastale"),
-            {
-                "fields": [
-                   "cadastral_income",
-                   "cadastral_category",
-                   "cadastral_subcategory",
-                   "cadastral_particle",
-                   "cadastral_subparticle",
-                   "cadastral_zone",
-                   "cadastral_quarter",
-                   "cadastral_area",
-                   "cadastral_map",
-                   "cadastral_sheet",
-                ],
-                "classes": ["collapse"]
-            },
-        ),
-        (
             _("APE"),
             {
                 "fields": [
@@ -99,9 +96,15 @@ class PropertyAdmin(admin.ModelAdmin):
                 # "classes": ["collapse"]
             },
         ),
-
     ]
+
+
+class CitizenshipAdmin(admin.ModelAdmin):
+    list_display = ["name", "code"]
+    search_fields = ["name", "code"]
 
 
 admin.site.register(Host, HostAdmin)
 admin.site.register(Property, PropertyAdmin)
+admin.site.register(CadastralData, CadastralDataAdmin)
+admin.site.register(Citizenship, CitizenshipAdmin)

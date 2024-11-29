@@ -286,6 +286,21 @@ xlsx = ["tablib[xlsx]"]
 yaml = ["tablib[yaml]"]
 
 [[package]]
+name = "django-modeltranslation"
+version = "0.19.11"
+description = "Translates Django models using a registration approach."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django_modeltranslation-0.19.11-py3-none-any.whl", hash = "sha256:fe36ecb8d943aaa406e4045d34e2160e90b170b0c71c8d0b5336e5031030b202"},
+    {file = "django_modeltranslation-0.19.11.tar.gz", hash = "sha256:c65a2652554c22bbe11f5db2e81e0c66d58434077d31dce7089cc7bd3ce4e79c"},
+]
+
+[package.dependencies]
+Django = ">=4.2"
+typing-extensions = {version = ">=4.0.1", markers = "python_version < \"3.11\""}
+
+[[package]]
 name = "django-simple-history"
 version = "3.7.0"
 description = "Store model history and view/revert changes from admin site."
@@ -916,4 +931,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "53fb4a88a85adbf7475f75f465478632936a155a28a9c54feeaa45c9c892801b"
+content-hash = "4fe0cbb5c43532feb8c23c0672779a8eac03cd4b8da1ff0cae36f747375deb32"

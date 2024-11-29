@@ -25,6 +25,7 @@ openpyxl = "^3.1.4"
 django-unfold = "^0.40.0"
 import-export = "^0.3.1"
 whitenoise = "^6.7.0"
+django-modeltranslation = "^0.19.11"
 
 
 [tool.poetry.group.dev.dependencies]
