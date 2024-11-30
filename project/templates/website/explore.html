@@ -1,0 +1,44 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}Home - My Django App{% endblock %}
+
+{% block content %}
+    {% block header %}
+        {% include 'website/header.html' %}
+    {% endblock %}
+    <div class="jumbotron jumbotron-fluid text-center bg-white">
+        <div class="container">
+            <h1 class="jumbotron-heading">All Properties</h1>
+            <p class="lead text-muted">Discover our selection of exceptional properties, each thoughtfully prepared to
+                provide
+                comfort and style.
+                Whether you're seeking a city retreat or a countryside escape, find the perfect place to make your stay
+                unforgettable.</p>
+            {% block availability %}
+                {% include 'website/availability.html' %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            {% block vertical %}
+                {% include 'website/card_vertical.html' %}
+            {% endblock %}
+            {% block vertical1 %}
+                {% include 'website/card_vertical.html' %}
+            {% endblock %}
+            {% block vertical2 %}
+                {% include 'website/card_vertical.html' %}
+            {% endblock %}
+            {% block vertical4 %}
+                {% include 'website/card_vertical.html' %}
+            {% endblock %}
+        </div>
+    </div>
+    {% block footer %}
+        {% include 'website/footer_light.html' %}
+    {% endblock %}
+
+{% endblock %}

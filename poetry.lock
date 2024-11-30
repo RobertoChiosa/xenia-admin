@@ -301,6 +301,20 @@ Django = ">=4.2"
 typing-extensions = {version = ">=4.0.1", markers = "python_version < \"3.11\""}
 
 [[package]]
+name = "django-sass-processor"
+version = "1.4.1"
+description = "SASS processor to compile SCSS files into *.css, while rendering, or offline."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django_sass_processor-1.4.1-py3-none-any.whl", hash = "sha256:7b76560172f72519cfcda944feeb517b37f40f5562196298245f5569c2d02f91"},
+    {file = "django_sass_processor-1.4.1.tar.gz", hash = "sha256:1e9d04769f76d89bbf77b9b279ba83dfacad9c98c03ca8a58ecfc29d997e6fcf"},
+]
+
+[package.extras]
+management-command = ["django-compressor (>=2.4)"]
+
+[[package]]
 name = "django-simple-history"
 version = "3.7.0"
 description = "Store model history and view/revert changes from admin site."
@@ -931,4 +945,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "4fe0cbb5c43532feb8c23c0672779a8eac03cd4b8da1ff0cae36f747375deb32"
+content-hash = "49c58c7ef7afe2cf18003c8eac4e008ae6d4e94124dd16cd87d03d4a561b1936"

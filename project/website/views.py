@@ -8,23 +8,23 @@ def home(request):
     context = {
         "current_year": 2024,  # Example context variable for the footer
     }
-    return render(request, "home.html", context)
+    return render(request, "website/home.html", context)
 
 
 def about(request):
     context = {
         "title": "About Us",
     }
-    return render(request, "about.html", context)
+    return render(request, "website/about.html", context)
 
 
 def property(request):
-    return render(request, "property.html")
+    return render(request, "website/property.html")
 
 
 def checkin(request):
-    return render(request, "checkin.html")
+    return render(request, "website/checkin.html")
 
 
 def explore(request):
-    return render(request, "explore.html")
+    return render(request, "website/explore.html")

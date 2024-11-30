@@ -1,0 +1,30 @@
+{% extends 'website/base.html' %}
+
+{% block title %}Home - My Django App{% endblock %}
+
+{% block content %}
+    {% block header %}
+        {% include 'website/header.html' %}
+    {% endblock %}
+
+    <div class="jumbotron jumbotron-fluid text-center bg-white">
+        <div class="container">
+            <h1 class="jumbotron-heading">Where next?</h1>
+            <p class="lead text-muted">Offering the best hospitality for stort term rentals</p>
+            {% block availability %}
+                {% include 'website/availability.html' %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="container">
+
+        <h4>Recently Added</h4>
+        {% block recently_added %}
+            {% include 'website/card_horizontal.html' %}
+        {% endblock %}
+    </div>
+    {% block footer %}
+        {% include 'website/footer.html' %}
+    {% endblock %}
+{% endblock %}
