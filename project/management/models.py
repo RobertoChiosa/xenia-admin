@@ -1,6 +1,11 @@
+#  Copyright © Roberto Chiosa 2024.
+#  Email: roberto@xeniapm.it
+#  Last edited: 2/12/2024
+
 # Create your models here.
 
 
+# Third party imports
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -13,6 +18,54 @@ def host_id_card_upload_directory(instance, filename):
 def property_documents_upload_directory(instance, filename):
     # file will be uploaded to MEDIA_ROOT/<model_name>/<id>/<filename>
     return f"{instance.__class__.__name__}/{instance.id}/documents/{filename}"
+
+
+# {
+#     "location": {
+#         "street": "Wönnichstr. 68/70",
+#         "zip": "10317",
+#         "city": "Berlin",
+#         "country": "Germany",
+#         "latitude": "52.5200080000000",
+#         "longitude": "13.4049540000000"
+#     },
+#    "timeZone": "Europe/Berlin",
+#     "rooms": {
+#         "maxOccupancy": 4,
+#         "bedrooms": 4,
+#         "bathrooms": 2,
+#         "doubleBeds": 1,
+#         "singleBeds": 3,
+#         "sofaBeds": null,
+#         "couches": null,
+#         "childBeds": null,
+#         "queenSizeBeds": null,
+#         "kingSizeBeds": 1
+#
+#     },
+#     "equipments": [
+#         "Internet",
+#         "Whirlpool",
+#         "Pool",
+#         "Heating"
+#     ],
+#     "currency": "EUR",
+#     "price": {
+#             "minimal": "10.00",
+#             "maximal": "100.00"
+#     },
+#     "type": {
+#         "id": 2,
+#         "name": "Holiday rental"
+#     }
+# }
+
+
+class Apartment(models.Model):
+    location = models.JSONField(_("location"), null=True, blank=True)
+    equipments = models.JSONField(_("equipments"), null=True, blank=True)
+    timeZone = models.CharField(_("timeZone"), max_length=50, null=True, blank=True)
+    rooms = models.JSONField(_("rooms"), null=True, blank=True)
 
 
 class Property(models.Model):

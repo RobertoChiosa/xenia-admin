@@ -1,6 +1,11 @@
+#  Copyright © Roberto Chiosa 2024.
+#  Email: roberto@xeniapm.it
+#  Last edited: 2/12/2024
+
+# Third party imports
 from modeltranslation.translator import TranslationOptions, register
 
-from ..management.models import Property, Host
+from ..management.models import Host, Property
 
 
 @register(Property)

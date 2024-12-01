@@ -1,3 +1,9 @@
+/*
+ * Copyright © Roberto Chiosa 2024.
+ * Email: roberto@xeniapm.it
+ * Last edited: 2/12/2024
+ */
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
@@ -76,6 +82,20 @@
   letter-spacing: -.05rem;
 }
 
+.card {
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.5s;
+}
+
+.card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card:hover {
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+}
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */

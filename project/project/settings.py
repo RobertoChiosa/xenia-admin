@@ -10,9 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+#  Copyright © Roberto Chiosa 2024.
+#  Email: roberto@xeniapm.it
+#  Last edited: 2/12/2024
+
+# Standard library imports
 import os
 from pathlib import Path
 
+# Third party imports
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -49,6 +55,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",  # multiple urls for the same django instance
 ]
 
 MIDDLEWARE = [
@@ -152,3 +159,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+# Site framework https://docs.djangoproject.com/en/5.1/ref/contrib/sites/
+SITE_ID = 1

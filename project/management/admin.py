@@ -1,7 +1,12 @@
+#  Copyright © Roberto Chiosa 2024.
+#  Email: roberto@xeniapm.it
+#  Last edited: 2/12/2024
+
+# Third party imports
 from django.contrib import admin
 from django.utils.translation import gettext as _
 
-from .models import Host, Property, CadastralData, Citizenship
+from .models import CadastralData, Citizenship, Host, Property
 
 
 class CitizenshipInline(admin.StackedInline):
