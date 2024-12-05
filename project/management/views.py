@@ -1,14 +1,14 @@
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
-#  Last edited: 5/12/2024
+#  Last edited: 6/12/2024
 import os
 
-from django.contrib.sites import requests
+import requests
 # Third party imports
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from models import Property
+from .models import Property
 
 
 # Create your views here.
@@ -23,9 +23,8 @@ def host_upload(request):
 
 
 def apartments(request):
-    url = "https://login.smoobu.com/api/apartments"
     response = requests.get(
-        url,
+        "https://login.smoobu.com/api/apartments",
         headers={
             "Content-type": "application/json",
             "Api-Key": os.getenv("APIKEY"),
@@ -33,12 +32,40 @@ def apartments(request):
     )
     print(response)
     data = response.json()
-    for apt in data:
-        print(apt)
-        apartment_data = Property(
-            name=apt["name"],
-            smoobu_id=apt["id"],
+    for apt in data["apartments"]:
+        response_single = requests.get(
+            f"https://login.smoobu.com/api/apartments/{apt['id']}",
+            headers={
+                "Content-type": "application/json",
+                "Api-Key": os.getenv("APIKEY"),
+            },
         )
-        apartment_data.save()
+        location = response_single.json()["location"]
+        timeZone = response_single.json()["timeZone"]
+        # insert if not existing and update if existes
+        if not Property.objects.filter(smoobu_id=apt["id"]).exists():
+            Property(
+                name=apt["name"],
+                smoobu_id=apt["id"],
+                street=location["street"],
+                zip=location["zip"],
+                city=location["city"],
+                country=location["country"],
+                latitude=location["latitude"],
+                longitude=location["longitude"],
+                time_zone=timeZone,
+            ).save()
+        else:
+            Property.objects.filter(smoobu_id=apt["id"]).update(
+                name=apt["name"],
+                smoobu_id=apt["id"],
+                street=location["street"],
+                zip=location["zip"],
+                city=location["city"],
+                country=location["country"],
+                latitude=location["latitude"],
+                longitude=location["longitude"],
+                time_zone=timeZone,
+            )
 
-    return render(request, "smoobu/apartments.html")
+    return render(request, "management/apartments.html")

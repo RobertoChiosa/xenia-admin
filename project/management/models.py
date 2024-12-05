@@ -1,6 +1,6 @@
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
-#  Last edited: 5/12/2024
+#  Last edited: 6/12/2024
 
 # Create your models here.
 
@@ -67,12 +67,13 @@ class Property(models.Model):
     street = models.CharField(_("street"), max_length=100, null=True, blank=True)
     zip = models.CharField(_("zip"), max_length=10, null=True, blank=True)
     city = models.CharField(_("city"), max_length=50, null=True, blank=True)
-    country = models.CharField(_("city"), max_length=50, null=True, blank=True)
-    latitude = models.CharField(_("city"), max_length=50, null=True, blank=True)
-    longitude = models.CharField(_("city"), max_length=50, null=True, blank=True)
+    country = models.CharField(_("country"), max_length=50, null=True, blank=True)
+    latitude = models.CharField(_("latitude"), max_length=50, null=True, blank=True)
+    longitude = models.CharField(_("longitude"), max_length=50, null=True, blank=True)
+    time_zone = models.CharField(_("time_zone"), max_length=50, null=True, blank=True)
 
     def __str__(self):
-        return self.name or "Unnamed Property"
+        return self.name or "Senza Nome"
 
     class Meta:
         verbose_name = _("Proprietà")
@@ -84,7 +85,7 @@ class CadastralData(models.Model):
         to=Property, on_delete=models.CASCADE, primary_key=True, default=None
     )
     income = models.DecimalField(
-        max_digits=10, decimal_places=2, default=-1, null=True, blank=True
+        max_digits=10, decimal_places=2, default=None, null=True, blank=True
     )
     category = models.CharField(max_length=10, null=True, blank=True)
     subcategory = models.CharField(max_length=10, null=True, blank=True)
@@ -93,10 +94,10 @@ class CadastralData(models.Model):
     zone = models.CharField(max_length=10, null=True, blank=True)
     quarter = models.CharField(max_length=10, null=True, blank=True)
     area = models.DecimalField(
-        max_digits=10, decimal_places=2, default=-1, null=True, blank=True
+        max_digits=10, decimal_places=2, default=None, null=True, blank=True
     )
     volume = models.DecimalField(
-        max_digits=10, decimal_places=2, default=-1, null=True, blank=True
+        max_digits=10, decimal_places=2, default=None, null=True, blank=True
     )
     coordinates = models.CharField(max_length=50, null=True, blank=True)
     map = models.FileField(
@@ -111,6 +112,13 @@ class CadastralData(models.Model):
         null=True,
         blank=True,
     )
+
+    def __str__(self):
+        return self.property.name or "Senza Nome"
+
+    class Meta:
+        verbose_name = _("Dati Catastali")
+        verbose_name_plural = _("Dati Catastali")
 
 
 class Host(models.Model):
@@ -131,8 +139,8 @@ class Host(models.Model):
     property = models.ManyToManyField(Property, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name or "Senza Nome"
 
     class Meta:
-        verbose_name = "host"
-        verbose_name_plural = "hosts"
+        verbose_name = _("Host")
+        verbose_name_plural = _("Hosts")

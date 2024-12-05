@@ -1,6 +1,6 @@
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
-#  Last edited: 5/12/2024
+#  Last edited: 6/12/2024
 
 # Third party imports
 from django.contrib import admin
@@ -70,7 +70,14 @@ class CadastralDataAdmin(admin.ModelAdmin):
 
 class PropertyAdmin(admin.ModelAdmin):
     inlines = [CadastralDataInline]
-    list_display = ["name", "smoobu_id"]
+    list_display = [
+        "name",
+        "street",
+        "city",
+        "country",
+    ]
+    search_fields = ["name", "city", "country"]
+    list_filter = ["city", "country"]
 
 
 admin.site.register(Host, HostAdmin)
