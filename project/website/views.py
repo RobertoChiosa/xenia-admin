@@ -8,6 +8,7 @@ from django.shortcuts import render
 
 from .form import AvailabilityForm
 
+
 # Create your views here.
 
 
@@ -105,3 +106,12 @@ def about_view(request):
     :return:
     """
     return render(request, "website/about.html")
+
+
+def privacy_view(request):
+    """
+    This function renders the privacy policy page
+    :param request:
+    :return:
+    """
+    return render(request, "website/privacy.html")

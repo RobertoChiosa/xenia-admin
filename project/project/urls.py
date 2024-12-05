@@ -17,7 +17,7 @@ Including another URLconf
 
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
-#  Last edited: 2/12/2024
+#  Last edited: 4/12/2024
 
 # Third party imports
 from django.conf import settings
@@ -28,5 +28,6 @@ from django.urls import include, path
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("management/", include("management.urls")),
+    path("smoobu/", include("smoobu.urls")),
     path("", include("website.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

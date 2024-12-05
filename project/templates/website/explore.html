@@ -15,14 +15,21 @@
                 comfort and style.
                 Whether you're seeking a city retreat or a countryside escape, find the perfect place to make your stay
                 unforgettable.</p>
-            {% block availability %}
-                {% include 'website/availability.html' %}
-            {% endblock %}
+        </div>
+    </div>
+    <div class="container text-center">
+        <div id="apartmentIframeAll">
+            <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
+            <script>BookingToolIframe.initialize({
+                "url": "https://login.smoobu.com/it/booking-tool/iframe/46106",
+                "baseUrl": "https://login.smoobu.com",
+                "target": "#apartmentIframeAll"
+            })</script>
         </div>
     </div>
     <div class="container">
         <h4 class="text-muted">All properties available</h4>
-    <hr>
+        <hr>
         <div class="row">
             {% block vertical %}
                 {% include 'website/card_vertical.html' %}

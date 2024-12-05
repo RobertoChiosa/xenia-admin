@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
-#  Last edited: 2/12/2024
+#  Last edited: 5/12/2024
 
 # Standard library imports
 import os
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # "unfold.contrib.filters",
     # "unfold.contrib.forms",
     # "unfold.contrib.simple_history",
+    "project.admin.MyAdminSite",
     "sass_processor",  # Custom scss variables bootstrap override
     "modeltranslation",
     "management.apps.ManagementConfig",

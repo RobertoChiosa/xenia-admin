@@ -1,0 +1,17 @@
+{% extends 'website/base.html' %}
+
+
+{% block content %}
+    {% include 'smoobu/guide/taxi_in_piombino.html' %}
+    {% include 'smoobu/guide/wifi_access.html' %}
+
+    <div id="apartmentIframeAll">
+        <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
+        <script>BookingToolIframe.initialize({
+            "url": "https://login.smoobu.com/it/booking-tool/iframe/46106",
+            "baseUrl": "https://login.smoobu.com",
+            "target": "#apartmentIframeAll"
+        })</script>
+    </div>
+
+{% endblock %}

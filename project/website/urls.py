@@ -13,4 +13,5 @@ urlpatterns = [
     path("property", views.property_view, name="property"),
     path("checkin", views.checkin_view, name="checkin"),
     path("explore", views.explore_view, name="explore"),
+    path("privacy", views.privacy_view, name="privacy"),
 ]

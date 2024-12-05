@@ -1,0 +1,22 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block title %}Home - My Django App{% endblock %}
+
+{% block content %}
+    {% block header %}
+        {% include 'website/header.html' %}
+    {% endblock %}
+    <div class="container">
+    <br>
+    <h1>Privacy Policy</h1>
+    <p>Our privacy policy is simple. We do not collect any personal information from you. We do not use cookies. We do not track you. We do not store any information about you. We do not share any information about you. We do not sell any information about you. We do not have any information about you.</p>
+    <p>Our website is hosted on a server that may collect some information about you, such as your IP address, but we do not have access to that information.</p>
+    <p>If you have any questions about our privacy policy, please contact us at</p>
+    </div>
+
+    {% block footer %}
+        {% include 'website/footer_light.html' %}
+    {% endblock %}
+{% endblock %}
+

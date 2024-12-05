@@ -12,12 +12,8 @@
             <div class="container">
                 <h1 class="jumbotron-heading">Apartment 1</h1>
                 <p class="lead text-muted">Discover apartment 1.</p>
-                {% block availability %}
-                    {% include 'website/availability.html' %}
-                {% endblock %}
             </div>
         </div>
-
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -83,6 +79,25 @@
 
         <h2>Location</h2>
         <p class="text-muted">{{ location.street }},{{ location.zip }}, {{ location.city }}</p>
+
+    </div>
+    <div class="container text-center">
+        <div id="smoobuCalendarIframe" class="text-center">
+            <link rel="stylesheet" type="text/css" href="https://login.smoobu.com/css/singleCalendarWidgetIframe.css">
+            <iframe class="smallDevices" height="540px" width="280px"
+                    src="https://login.smoobu.com/en/cockpit/widget/show-calendar-iframe/200124/336d4ed7d61bbe567215f21da38f257c53c9b3daf3223f189802b7f8384fc617"></iframe>
+            <iframe class="bigDevices" height="600px" width="1000px"
+                    src="https://login.smoobu.com/en/cockpit/widget/show-calendar-iframe/200124/336d4ed7d61bbe567215f21da38f257c53c9b3daf3223f189802b7f8384fc617"></iframe>
+        </div>
+    <div id="apartmentIframe200124">
+        <script type="text/javascript"
+                src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
+        <script>BookingToolIframe.initialize({
+            "url": "https://login.smoobu.com/it/booking-tool/iframe/46106/200124",
+            "baseUrl": "https://login.smoobu.com",
+            "target": "#apartmentIframe200124"
+        })</script>
+    </div>
     </div>
     {% block footer %}
         {% include 'website/footer_light.html' %}

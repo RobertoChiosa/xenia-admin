@@ -1,3 +1,26 @@
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
-#  Last edited: 2/12/2024
+#  Last edited: 5/12/2024
+
+from django.contrib import admin
+
+
+class MyAdminSite(admin.AdminSite):
+    def get_app_list(self, request):
+        app_list = super().get_app_list(request)
+        app_list += [
+            {
+                "name": "My Custom App",
+                "app_label": "my_test_app",
+                # "app_url": "/admin/test_view",
+                "models": [
+                    {
+                        "name": "tcptraceroute",
+                        "object_name": "tcptraceroute",
+                        "admin_url": "/admin/test_view",
+                        "view_only": True,
+                    }
+                ],
+            }
+        ]
+        return app_list
