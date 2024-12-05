@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     # "unfold.contrib.filters",
     # "unfold.contrib.forms",
     # "unfold.contrib.simple_history",
-    "project.admin.MyAdminSite",
     "sass_processor",  # Custom scss variables bootstrap override
     "modeltranslation",
     "management.apps.ManagementConfig",
