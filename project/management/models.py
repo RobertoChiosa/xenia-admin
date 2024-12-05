@@ -1,6 +1,6 @@
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
-#  Last edited: 2/12/2024
+#  Last edited: 5/12/2024
 
 # Create your models here.
 
@@ -61,26 +61,15 @@ def property_documents_upload_directory(instance, filename):
 # }
 
 
-class Apartment(models.Model):
-    location = models.JSONField(_("location"), null=True, blank=True)
-    equipments = models.JSONField(_("equipments"), null=True, blank=True)
-    timeZone = models.CharField(_("timeZone"), max_length=50, null=True, blank=True)
-    rooms = models.JSONField(_("rooms"), null=True, blank=True)
-
-
 class Property(models.Model):
+    smoobu_id = models.IntegerField(_("smoobu_id"), null=True, blank=True)
     name = models.CharField(_("name"), max_length=100, null=True, blank=True)
-    description = models.TextField(_("description"), null=True, blank=True)
-    address = models.CharField(_("address"), max_length=100, null=True, blank=True)
+    street = models.CharField(_("street"), max_length=100, null=True, blank=True)
+    zip = models.CharField(_("zip"), max_length=10, null=True, blank=True)
     city = models.CharField(_("city"), max_length=50, null=True, blank=True)
-    state = models.CharField(_("state"), max_length=50, null=True, blank=True)
-    zipcode = models.CharField(_("zipcode"), max_length=10, null=True, blank=True)
-    energy_performance_certificate = models.FileField(
-        verbose_name=_("APE"),
-        upload_to=property_documents_upload_directory,
-        null=True,
-        blank=True,
-    )
+    country = models.CharField(_("city"), max_length=50, null=True, blank=True)
+    latitude = models.CharField(_("city"), max_length=50, null=True, blank=True)
+    longitude = models.CharField(_("city"), max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.name or "Unnamed Property"
@@ -147,15 +136,3 @@ class Host(models.Model):
     class Meta:
         verbose_name = "host"
         verbose_name_plural = "hosts"
-
-
-class Citizenship(models.Model):
-    name = models.CharField(max_length=50, null=True, blank=True)
-    code = models.CharField(max_length=2, null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "cittadinanza"
-        verbose_name_plural = "cittadinanze"

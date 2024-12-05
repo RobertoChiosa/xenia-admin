@@ -1,17 +1,12 @@
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
-#  Last edited: 2/12/2024
+#  Last edited: 5/12/2024
 
 # Third party imports
 from django.contrib import admin
 from django.utils.translation import gettext as _
 
-from .models import CadastralData, Citizenship, Host, Property
-
-
-class CitizenshipInline(admin.StackedInline):
-    model = Citizenship
-    extra = 1
+from .models import CadastralData, Host, Property
 
 
 class HostAdmin(admin.ModelAdmin):
@@ -74,42 +69,10 @@ class CadastralDataAdmin(admin.ModelAdmin):
 
 
 class PropertyAdmin(admin.ModelAdmin):
-    list_display = ["name", "address"]
     inlines = [CadastralDataInline]
-
-    fieldsets = [
-        (
-            _("Anagrafica"),
-            {
-                "fields": [
-                    "name",
-                    "description",
-                    "address",
-                    "city",
-                    "state",
-                    "zipcode",
-                ],
-                # "classes": ["collapse"]
-            },
-        ),
-        (
-            _("APE"),
-            {
-                "fields": [
-                    "energy_performance_certificate",
-                ],
-                # "classes": ["collapse"]
-            },
-        ),
-    ]
-
-
-class CitizenshipAdmin(admin.ModelAdmin):
-    list_display = ["name", "code"]
-    search_fields = ["name", "code"]
+    list_display = ["name", "smoobu_id"]
 
 
 admin.site.register(Host, HostAdmin)
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(CadastralData, CadastralDataAdmin)
-admin.site.register(Citizenship, CitizenshipAdmin)
