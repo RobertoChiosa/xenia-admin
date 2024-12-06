@@ -55,16 +55,15 @@ class CadastralDataInline(admin.StackedInline):
 class CadastralDataAdmin(admin.ModelAdmin):
     list_display = [
         "property",
-        "income",
-        "category",
-        "subcategory",
+        "code_regional",
+        "code_national",
+        "section",
+        "sheet",
         "particle",
         "subparticle",
-        "zone",
-        "quarter",
-        "area",
-        "volume",
-        "coordinates",
+        "category",
+        "energy_class",
+        "consistency",
     ]
     search_fields = ["property"]
 

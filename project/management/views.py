@@ -4,6 +4,7 @@
 import os
 
 import requests
+
 # Third party imports
 from django.http import HttpResponse
 from django.shortcuts import render

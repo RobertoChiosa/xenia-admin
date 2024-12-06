@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
-#  Last edited: 5/12/2024
+#  Last edited: 6/12/2024
 
 # Standard library imports
 import os
@@ -160,5 +160,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-# Site framework https://docs.djangoproject.com/en/5.1/ref/contrib/sites/
-SITE_ID = 1
+FIXTURE_DIRS = BASE_DIR / "fixtures"

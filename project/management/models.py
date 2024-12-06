@@ -69,8 +69,8 @@ class Property(models.Model):
     zip = models.CharField(_("zip"), max_length=10, null=True, blank=True)
     city = models.CharField(_("city"), max_length=50, null=True, blank=True)
     country = models.CharField(_("country"), max_length=50, null=True, blank=True)
-    latitude = models.CharField(_("latitude"), max_length=50, null=True, blank=True)
-    longitude = models.CharField(_("longitude"), max_length=50, null=True, blank=True)
+    latitude = models.FloatField(_("latitude"), null=True, blank=True)
+    longitude = models.FloatField(_("longitude"), null=True, blank=True)
     time_zone = models.CharField(_("time_zone"), max_length=50, null=True, blank=True)
 
     @property
@@ -89,34 +89,19 @@ class CadastralData(models.Model):
     property = models.OneToOneField(
         to=Property, on_delete=models.CASCADE, primary_key=True, default=None
     )
-    income = models.DecimalField(
-        max_digits=10, decimal_places=2, default=None, null=True, blank=True
+    section = models.CharField(_("sezione"), max_length=20, null=True, blank=True)
+    sheet = models.CharField(_("foglio"), max_length=20, null=True, blank=True)
+    particle = models.CharField(_("particella"), max_length=20, null=True, blank=True)
+    subparticle = models.CharField(
+        _("subalterno"), max_length=20, null=True, blank=True
     )
-    category = models.CharField(max_length=10, null=True, blank=True)
-    subcategory = models.CharField(max_length=10, null=True, blank=True)
-    particle = models.CharField(max_length=10, null=True, blank=True)
-    subparticle = models.CharField(max_length=10, null=True, blank=True)
-    zone = models.CharField(max_length=10, null=True, blank=True)
-    quarter = models.CharField(max_length=10, null=True, blank=True)
-    area = models.DecimalField(
-        max_digits=10, decimal_places=2, default=None, null=True, blank=True
+    category = models.CharField(_("categoria"), max_length=20, null=True, blank=True)
+    energy_class = models.CharField(_("classe"), max_length=20, null=True, blank=True)
+    consistency = models.CharField(
+        _("consistenza"), max_length=20, null=True, blank=True
     )
-    volume = models.DecimalField(
-        max_digits=10, decimal_places=2, default=None, null=True, blank=True
-    )
-    coordinates = models.CharField(max_length=50, null=True, blank=True)
-    map = models.FileField(
-        verbose_name=_("Mappa catastale"),
-        upload_to=property_documents_upload_directory,
-        null=True,
-        blank=True,
-    )
-    sheet = models.FileField(
-        verbose_name=_("Visura catastale"),
-        upload_to=property_documents_upload_directory,
-        null=True,
-        blank=True,
-    )
+    code_regional = models.CharField(_("CIR"), max_length=20, null=True, blank=True)
+    code_national = models.CharField(_("CIN"), max_length=20, null=True, blank=True)
 
     def __str__(self):
         return self.property.name or "Senza Nome"
