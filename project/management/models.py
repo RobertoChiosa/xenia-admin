@@ -15,9 +15,9 @@ def host_id_card_upload_directory(instance, filename):
     return f"{instance.__class__.__name__}/{instance.id}/id_card/{filename}"
 
 
-def property_documents_upload_directory(instance, filename):
+def property_cadastral_documents_upload_directory(instance, filename):
     # file will be uploaded to MEDIA_ROOT/<model_name>/<id>/<filename>
-    return f"{instance.__class__.__name__}/{instance.id}/documents/{filename}"
+    return f"{instance.__class__.__name__}/{instance.property_id}/visura_{filename}"
 
 
 # {
@@ -62,16 +62,16 @@ def property_documents_upload_directory(instance, filename):
 
 
 class Property(models.Model):
-    smoobu_id = models.IntegerField(_("smoobu_id"), null=True, blank=True)
-    booking_id = models.IntegerField(_("booking_id"), null=True, blank=True)
-    name = models.CharField(_("name"), max_length=100, null=True, blank=True)
-    street = models.CharField(_("street"), max_length=100, null=True, blank=True)
-    zip = models.CharField(_("zip"), max_length=10, null=True, blank=True)
-    city = models.CharField(_("city"), max_length=50, null=True, blank=True)
-    country = models.CharField(_("country"), max_length=50, null=True, blank=True)
-    latitude = models.FloatField(_("latitude"), null=True, blank=True)
-    longitude = models.FloatField(_("longitude"), null=True, blank=True)
-    time_zone = models.CharField(_("time_zone"), max_length=50, null=True, blank=True)
+    smoobu_id = models.IntegerField(_("id smoobu"), null=True, blank=True)
+    booking_id = models.IntegerField(_("id booking"), null=True, blank=True)
+    name = models.CharField(_("nome"), max_length=100, null=True, blank=True)
+    street = models.CharField(_("via"), max_length=100, null=True, blank=True)
+    zip = models.CharField(_("cap"), max_length=10, null=True, blank=True)
+    city = models.CharField(_("città"), max_length=50, null=True, blank=True)
+    country = models.CharField(_("paese"), max_length=50, null=True, blank=True)
+    latitude = models.FloatField(_("latitudine"), null=True, blank=True)
+    longitude = models.FloatField(_("longitudine"), null=True, blank=True)
+    time_zone = models.CharField(_("fuso orario"), max_length=50, null=True, blank=True)
 
     @property
     def smoobu_edit_link(self):
@@ -96,12 +96,36 @@ class CadastralData(models.Model):
         _("subalterno"), max_length=20, null=True, blank=True
     )
     category = models.CharField(_("categoria"), max_length=20, null=True, blank=True)
-    energy_class = models.CharField(_("classe"), max_length=20, null=True, blank=True)
+    cadastrial_class = models.CharField(
+        _("classe"), max_length=20, null=True, blank=True
+    )
     consistency = models.CharField(
         _("consistenza"), max_length=20, null=True, blank=True
     )
-    code_regional = models.CharField(_("CIR"), max_length=20, null=True, blank=True)
-    code_national = models.CharField(_("CIN"), max_length=20, null=True, blank=True)
+    surface = models.CharField(
+        _("superficie catastale"), max_length=20, null=True, blank=True
+    )
+    rent = models.CharField(_("rendita"), max_length=20, null=True, blank=True)
+    code_regional = models.CharField(
+        _("CIR"),
+        help_text="Codice identificativo regionale",
+        max_length=20,
+        null=True,
+        blank=True,
+    )
+    code_national = models.CharField(
+        _("CIN"),
+        help_text="Codice identificativo nazionale",
+        max_length=20,
+        null=True,
+        blank=True,
+    )
+    file = models.FileField(
+        _("visura"),
+        upload_to=property_cadastral_documents_upload_directory,
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return self.property.name or "Senza Nome"

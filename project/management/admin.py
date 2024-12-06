@@ -57,17 +57,20 @@ class CadastralDataAdmin(admin.ModelAdmin):
         "property",
         "code_regional",
         "code_national",
-        "section",
-        "sheet",
-        "particle",
-        "subparticle",
-        "category",
-        "energy_class",
-        "consistency",
+        # "section",
+        # "sheet",
+        # "particle",
+        # "subparticle",
+        # "category",
+        # "consistency",
+        # "surface",
+        # "rent",
+        "file",
     ]
-    search_fields = ["property"]
+    search_fields = ["property", "code_regional", "code_national"]
 
 
+# todo export excel
 class PropertyAdmin(admin.ModelAdmin):
     inlines = [CadastralDataInline]
     list_display = [
