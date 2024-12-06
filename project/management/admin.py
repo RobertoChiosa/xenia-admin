@@ -121,6 +121,12 @@ class PropertyAdmin(admin.ModelAdmin):
 
     @admin.action(description="Modifica in Smoobu")
     def edit_in_smoobu(self, request, queryset):
+        """
+        Modifica in smoobu
+        :param request:
+        :param queryset:
+        :return:
+        """
         links = []
         for obj in queryset:
             if hasattr(obj, "smoobu_edit_link") and obj.smoobu_edit_link:

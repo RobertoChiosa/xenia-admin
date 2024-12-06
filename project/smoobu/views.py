@@ -2,6 +2,7 @@
 #  Email: roberto@xeniapm.it
 #  Last edited: 5/12/2024
 
+# Third party imports
 from django.shortcuts import render
 from dotenv import load_dotenv
 

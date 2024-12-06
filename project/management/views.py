@@ -1,19 +1,18 @@
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
 #  Last edited: 6/12/2024
+# Standard library imports
 import os
 
+# Third party imports
 import requests
 from django.contrib.admin.views.decorators import staff_member_required
-
-# Third party imports
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from fpdf import FPDF
 from reportlab.pdfgen import canvas
 
-from .models import Property, CadastralData
-
+from .models import CadastralData, Property
 
 # Create your views here.
 
@@ -88,10 +87,11 @@ def contratto_locazione(request):
 
 
 def generate_pdf_report_scheda(request, property_id):
-    from reportlab.lib.pagesizes import letter
+    # Third party imports
     from reportlab.lib import colors
-    from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
+    from reportlab.lib.pagesizes import letter
     from reportlab.lib.styles import getSampleStyleSheet
+    from reportlab.platypus import Paragraph, SimpleDocTemplate, Table, TableStyle
 
     # Fetch the object by ID
     obj_property = get_object_or_404(Property, id=property_id)

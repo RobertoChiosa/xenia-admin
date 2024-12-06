@@ -1,9 +1,8 @@
 #  Copyright © Roberto Chiosa 2024.
 #  Email: roberto@xeniapm.it
 #  Last edited: 6/12/2024
-from django.contrib.admin.views.decorators import staff_member_required
-
 # Third party imports
+from django.contrib.admin.views.decorators import staff_member_required
 from django.urls import path
 
 from . import views

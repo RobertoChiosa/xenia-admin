@@ -8,7 +8,6 @@ from django.shortcuts import render
 
 from .form import AvailabilityForm
 
-
 # Create your views here.
 
 

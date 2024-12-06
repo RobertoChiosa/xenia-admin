@@ -29,6 +29,7 @@ django-modeltranslation = "^0.19.11"
 django-sass-processor = "^1.4.1"
 reportlab = "^4.2.5"
 fpdf2 = "^2.8.1"
+pre-commit = "^4.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -44,4 +45,3 @@ profile = "black"
 import_heading_stdlib = "Standard library imports"
 import_heading_thirdparty = "Third party imports"
 import_heading_firstparty = "Project imports"
-
