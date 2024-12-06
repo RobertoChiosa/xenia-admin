@@ -63,6 +63,7 @@ def property_documents_upload_directory(instance, filename):
 
 class Property(models.Model):
     smoobu_id = models.IntegerField(_("smoobu_id"), null=True, blank=True)
+    booking_id = models.IntegerField(_("booking_id"), null=True, blank=True)
     name = models.CharField(_("name"), max_length=100, null=True, blank=True)
     street = models.CharField(_("street"), max_length=100, null=True, blank=True)
     zip = models.CharField(_("zip"), max_length=10, null=True, blank=True)
@@ -71,6 +72,10 @@ class Property(models.Model):
     latitude = models.CharField(_("latitude"), max_length=50, null=True, blank=True)
     longitude = models.CharField(_("longitude"), max_length=50, null=True, blank=True)
     time_zone = models.CharField(_("time_zone"), max_length=50, null=True, blank=True)
+
+    @property
+    def smoobu_edit_link(self):
+        return f"https://login.smoobu.com/it/settings/apartments/edit/{self.smoobu_id}"
 
     def __str__(self):
         return self.name or "Senza Nome"

@@ -69,3 +69,15 @@ def apartments(request):
             )
 
     return render(request, "management/apartments.html")
+
+
+def contratto_locazione(request):
+    prop = Property.objects.filter(id=1).first()
+    context = {
+        "name": prop.name,
+        "street": prop.street,
+        "zip": prop.zip,
+        "city": prop.city,
+        "country": prop.country,
+    }
+    return render(request, "management/contratto_locazione.html", context)

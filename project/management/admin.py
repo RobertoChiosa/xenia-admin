@@ -4,6 +4,7 @@
 
 # Third party imports
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
 
 from .models import CadastralData, Host, Property
@@ -76,8 +77,48 @@ class PropertyAdmin(admin.ModelAdmin):
         "city",
         "country",
     ]
-    search_fields = ["name", "city", "country"]
+    search_fields = [
+        "name",
+        "street",
+        "city",
+        "country",
+    ]
+    actions = ["edit_in_smoobu"]
+
     list_filter = ["city", "country"]
+    readonly_fields = [
+        "smoobu_id",
+        "name",
+        "street",
+        "zip",
+        "city",
+        "country",
+        "latitude",
+        "longitude",
+        "time_zone",
+    ]
+
+    def edit_in_smoobu(self, request, queryset):
+        links = []
+        for obj in queryset:
+            if hasattr(obj, "smoobu_edit_link") and obj.smoobu_edit_link:
+                links.append(
+                    f'<a href="{obj.smoobu_edit_link}" target="_blank">{obj.name}</a>'
+                )
+            else:
+                self.message_user(
+                    request,
+                    f"{obj} does not have a valid Smoobu edit link.",
+                )
+
+        if links:
+            # Use `mark_safe` to allow HTML in the message
+            self.message_user(
+                request,
+                mark_safe(f"Edit links: {' | '.join(links)}"),
+            )
+
+    edit_in_smoobu.short_description = "Edit selected items in Smoobu"
 
 
 admin.site.register(Host, HostAdmin)
