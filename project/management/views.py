@@ -12,7 +12,7 @@ from django.shortcuts import render, get_object_or_404
 from fpdf import FPDF
 from reportlab.pdfgen import canvas
 
-from .models import Property
+from .models import Property, CadastralData
 
 
 # Create your views here.
@@ -87,24 +87,73 @@ def contratto_locazione(request):
     return render(request, "management/contratto_locazione.html", context)
 
 
-def generate_pdf_report_scheda(request, object_id):
+def generate_pdf_report_scheda(request, property_id):
+    from reportlab.lib.pagesizes import letter
+    from reportlab.lib import colors
+    from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
+    from reportlab.lib.styles import getSampleStyleSheet
+
     # Fetch the object by ID
-    obj = get_object_or_404(Property, id=object_id)
+    obj_property = get_object_or_404(Property, id=property_id)
+    obj_cadastrial_data = get_object_or_404(CadastralData, property_id=property_id)
 
     # Create the HTTP response with PDF headers
     response = HttpResponse(content_type="application/pdf")
-    response["Content-Disposition"] = f'inline; filename="report_{obj.id}.pdf"'
+    response["Content-Disposition"] = f'inline; filename="report_{obj_property.id}.pdf"'
 
-    # Create a PDF canvas
-    p = canvas.Canvas(response)
+    # Create the PDF document
+    doc = SimpleDocTemplate(response, pagesize=letter)
+    styles = getSampleStyleSheet()
 
-    # Set title and metadata
-    p.setTitle(f"Report for {obj.name}")
-    p.drawString(100, 800, f"Property Report for {obj.name}")
-    p.drawString(100, 780, f"ID: {obj.id}")
+    # Title
+    title = Paragraph(f"Property Report: {obj_property.name}", styles["Title"])
+    title_property = Paragraph(f"Dati Anagrafici", styles["Heading3"])
+    title_cadastrial_data = Paragraph(f"Dati catastali", styles["Heading3"])
 
-    # Close the PDF and finalize the response
-    p.showPage()
-    p.save()
+    # Table Data
+    table_style = TableStyle(
+        [
+            ("BACKGROUND", (0, 0), (-1, 0), colors.white),
+            ("TEXTCOLOR", (0, 0), (-1, 0), colors.black),
+            ("ALIGN", (0, 0), (-1, -1), "LEFT"),
+            ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+            ("FONTSIZE", (0, 0), (-1, 0), 12),
+            ("BOTTOMPADDING", (0, 0), (-1, 0), 12),
+            ("BACKGROUND", (0, 1), (-1, -1), colors.white),
+            ("GRID", (0, 0), (-1, -1), 1, colors.black),
+        ]
+    )
+    data_property = [
+        ["Nome", "Valore"],  # Header Row
+    ]
+    for i in obj_property._meta.fields:
+        data_property.append(
+            [i.verbose_name.title(), getattr(obj_property, i.name) or "-"]
+        )
+    # Table Data
+    data_cadastrial_data = [
+        ["Nome", "Valore"],  # Header Row
+    ]
+    for i in obj_cadastrial_data._meta.fields:
+        data_cadastrial_data.append(
+            [i.verbose_name.title(), getattr(obj_cadastrial_data, i.name) or "-"]
+        )
+
+    # Create the Table
+    table_property = Table(data_property, colWidths=[150, 350])
+    table_cadastrial_data = Table(data_cadastrial_data, colWidths=[150, 350])
+
+    table_property.setStyle(table_style)
+    table_cadastrial_data.setStyle(table_style)
+
+    # Build the PDF
+    elements = [
+        title,
+        title_property,
+        table_property,
+        title_cadastrial_data,
+        table_cadastrial_data,
+    ]
+    doc.build(elements)
 
     return response
