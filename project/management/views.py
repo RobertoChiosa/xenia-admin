@@ -4,10 +4,13 @@
 import os
 
 import requests
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Third party imports
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from fpdf import FPDF
+from reportlab.pdfgen import canvas
 
 from .models import Property
 
@@ -82,3 +85,26 @@ def contratto_locazione(request):
         "country": prop.country,
     }
     return render(request, "management/contratto_locazione.html", context)
+
+
+def generate_pdf_report_scheda(request, object_id):
+    # Fetch the object by ID
+    obj = get_object_or_404(Property, id=object_id)
+
+    # Create the HTTP response with PDF headers
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = f'inline; filename="report_{obj.id}.pdf"'
+
+    # Create a PDF canvas
+    p = canvas.Canvas(response)
+
+    # Set title and metadata
+    p.setTitle(f"Report for {obj.name}")
+    p.drawString(100, 800, f"Property Report for {obj.name}")
+    p.drawString(100, 780, f"ID: {obj.id}")
+
+    # Close the PDF and finalize the response
+    p.showPage()
+    p.save()
+
+    return response

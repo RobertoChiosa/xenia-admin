@@ -12,4 +12,9 @@ urlpatterns = [
     path("host_id/", views.host_upload),
     path("apartments/", views.apartments),
     path("contratto-locazione/", views.contratto_locazione),
+    path(
+        "<int:object_id>/report/scheda",
+        views.generate_pdf_report_scheda,
+        name="generate_pdf_report_scheda",
+    ),
 ]

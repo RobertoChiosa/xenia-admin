@@ -50,6 +50,7 @@ class HostAdmin(admin.ModelAdmin):
 class CadastralDataInline(admin.StackedInline):
     model = CadastralData
     extra = 1
+    classes = ["wide"]
 
 
 class CadastralDataAdmin(admin.ModelAdmin):
@@ -77,17 +78,16 @@ class PropertyAdmin(admin.ModelAdmin):
         "name",
         "street",
         "city",
-        "country",
     ]
+
     search_fields = [
         "name",
         "street",
         "city",
-        "country",
     ]
-    actions = ["edit_in_smoobu"]
 
-    list_filter = ["city", "country"]
+    list_filter = ["city"]
+
     readonly_fields = [
         "smoobu_id",
         "name",
@@ -99,7 +99,27 @@ class PropertyAdmin(admin.ModelAdmin):
         "longitude",
         "time_zone",
     ]
+    fieldsets = [
+        (
+            "ANAGRAFICA",
+            {
+                "fields": [
+                    "smoobu_id",
+                    "name",
+                    "street",
+                    "zip",
+                    "city",
+                    "country",
+                    "latitude",
+                    "longitude",
+                    "time_zone",
+                ],
+                "classes": ["wide"],
+            },
+        ),
+    ]
 
+    @admin.action(description="Modifica in Smoobu")
     def edit_in_smoobu(self, request, queryset):
         links = []
         for obj in queryset:
@@ -120,7 +140,7 @@ class PropertyAdmin(admin.ModelAdmin):
                 mark_safe(f"Edit links: {' | '.join(links)}"),
             )
 
-    edit_in_smoobu.short_description = "Edit selected items in Smoobu"
+    actions = ["edit_in_smoobu"]
 
 
 admin.site.register(Host, HostAdmin)
