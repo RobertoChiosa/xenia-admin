@@ -7,7 +7,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
 
-from .models import CadastralData, Host, Property
+from .models import CadastralData, Host, Property, Reservation
 
 
 class HostAdmin(admin.ModelAdmin):
@@ -149,6 +149,116 @@ class PropertyAdmin(admin.ModelAdmin):
     actions = ["edit_in_smoobu"]
 
 
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = [
+        "property",
+        # "id",
+        # "reference_id",
+        "type",
+        "arrival",
+        "departure",
+        # "created_at",
+        # "modified_at",
+        "channel",
+        "guest_name",
+        "email",
+        # "phone",
+        "adults",
+        "children",
+        "check_in",
+        "check_out",
+        # "notice",
+        "price",
+        "price_paid",
+        # "prepayment",
+        # "prepayment_paid",
+        # "deposit",
+        # "deposit_paid",
+        "language",
+        # "guest_app_url",
+        # "is_blocked_booking",
+        # "guest_id",
+    ]
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "id",
+                    "reference_id",
+                    "guest_id",
+                    "type",
+                    "property",
+                    "channel",
+                )
+            },
+        ),
+        (
+            "Dettagli prenotazione",
+            {"fields": ("arrival", "departure", "check_in", "check_out", "notice")},
+        ),
+        (
+            "Informazioni Ospite",
+            {
+                "fields": (
+                    "guest_name",
+                    "email",
+                    "phone",
+                    "adults",
+                    "children",
+                    "language",
+                    "guest_app_url",
+                )
+            },
+        ),
+        (
+            "Prezzo",
+            {
+                "fields": (
+                    "price",
+                    "price_paid",
+                    "prepayment",
+                    "prepayment_paid",
+                    "deposit",
+                    "deposit_paid",
+                )
+            },
+        ),
+        ("Altro", {"fields": ("is_blocked_booking", "created_at", "modified_at")}),
+    )
+
+    readonly_fields = [
+        "id",
+        "reference_id",
+        "type",
+        "arrival",
+        "departure",
+        "created_at",
+        "modified_at",
+        # "property_smoobu_id",
+        "channel",
+        "guest_name",
+        "email",
+        "phone",
+        "adults",
+        "children",
+        "check_in",
+        "check_out",
+        "notice",
+        "price",
+        "price_paid",
+        "prepayment",
+        "prepayment_paid",
+        "deposit",
+        "deposit_paid",
+        "language",
+        "guest_app_url",
+        "is_blocked_booking",
+        "guest_id",
+    ]
+
+
 admin.site.register(Host, HostAdmin)
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(CadastralData, CadastralDataAdmin)
+admin.site.register(Reservation, ReservationAdmin)

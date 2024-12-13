@@ -2,6 +2,7 @@
 #  Email: roberto@xeniapm.it
 #  Last edited: 6/12/2024
 # Standard library imports
+import datetime
 import os
 
 # Third party imports
@@ -9,20 +10,56 @@ import requests
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 from fpdf import FPDF
 from reportlab.pdfgen import canvas
 
-from .models import CadastralData, Property
+from .forms import HostForm
+from .models import CadastralData, Property, Reservation, Host
+
 
 # Create your views here.
 
 
-def index(request):
-    return HttpResponse("Management resources")
+def home(request, host_id):
+    """
+    Homepage of the management app
+    :param request:
+    :param host_id:
+    :return:
+    """
+    host = get_object_or_404(Host, id=host_id)
+
+    return render(request, "management/home.html", {"host": host})
 
 
-def host_upload(request):
-    return HttpResponse("Hello, world. Here you can update your data.")
+def profile(request, host_id):
+    """
+    Homepage of the management app
+    :param request:
+    :param host_id:
+    :return:
+    """
+    host = get_object_or_404(Host, pk=host_id)
+    if request.method == "POST":
+        form = HostForm(request.POST, request.FILES, instance=host)
+        if form.is_valid():
+            form.save()
+    else:
+        form = HostForm(instance=host)
+
+    return render(
+        request,
+        "management/profile.html",
+        {
+            "host": host,
+            "form": form,
+        },
+    )
+
+
+def login(request):
+    return render(request, "management/login.html")
 
 
 def apartments(request):
@@ -70,6 +107,119 @@ def apartments(request):
                 longitude=location["longitude"],
                 time_zone=timeZone,
             )
+
+    return render(request, "management/apartments.html")
+
+
+def reservations(request):
+    params = {
+        "page": 1,
+        "page_size": 25,
+        "from": "2023-09-01",
+    }
+
+    # Initial parameters
+    params = {"page": 1, "page_size": 25}
+
+    # List to store all bookings
+    all_bookings = []
+
+    loop = True
+    # Make the API call
+    while loop:
+        response = requests.get(
+            "https://login.smoobu.com/api/reservations",
+            params=params,
+            headers={
+                "Content-type": "application/json",
+                "Api-Key": os.getenv("APIKEY"),
+            },
+        )
+        print("getting page", params["page"])
+
+        # Check if the response is valid
+        if response.status_code == 200:
+            data = response.json()
+            print(len(data["bookings"]))
+
+            # Add the current page's bookings to the list
+            all_bookings.extend(data["bookings"])
+
+            # Check if there are more pages to fetch
+            if data["page"] < data["page_count"]:
+                params["page"] += 1  # Move to the next page
+            else:
+                loop = False
+        else:
+            print(f"Error fetching data: {response.status_code}")
+            break
+
+    print(all_bookings)
+    for reservation in all_bookings:
+        print(reservation)
+        try:
+
+            if not Reservation.objects.filter(id=reservation["id"]).exists():
+                Reservation(
+                    id=reservation["id"],
+                    reference_id=reservation["reference-id"],
+                    type=reservation["type"],
+                    arrival=reservation["arrival"][:10],
+                    departure=reservation["departure"][:10],
+                    created_at=reservation["created-at"][:10],
+                    modified_at=reservation["modifiedAt"][:10],
+                    property=reservation["apartment"]["id"],
+                    channel=reservation["channel"]["id"],
+                    guest_name=reservation["guest-name"],
+                    email=reservation["email"],
+                    phone=reservation["phone"],
+                    adults=reservation["adults"],
+                    children=reservation["children"],
+                    check_in=reservation["check-in"],
+                    check_out=reservation["check-out"],
+                    notice=reservation["notice"],
+                    price=reservation["price"],
+                    price_paid=reservation["price-paid"],
+                    prepayment=reservation["prepayment"],
+                    prepayment_paid=reservation["prepayment-paid"],
+                    deposit=reservation["deposit"],
+                    deposit_paid=reservation["deposit-paid"],
+                    language=reservation["language"],
+                    guest_app_url=reservation["guest-app-url"],
+                    is_blocked_booking=reservation["is-blocked-booking"],
+                    guest_id=reservation["guestId"],
+                ).save()
+            else:
+                Reservation.objects.filter(id=reservation["id"]).update(
+                    reference_id=reservation["reference-id"],
+                    type=reservation["type"],
+                    arrival=reservation["arrival"][:10],
+                    departure=reservation["departure"][:10],
+                    created_at=reservation["created-at"][:10],
+                    modified_at=reservation["modifiedAt"][:10],
+                    property=reservation["apartment"]["id"],
+                    channel=reservation["channel"]["id"],
+                    guest_name=reservation["guest-name"],
+                    email=reservation["email"],
+                    phone=reservation["phone"],
+                    adults=reservation["adults"],
+                    children=reservation["children"],
+                    check_in=reservation["check-in"],
+                    check_out=reservation["check-out"],
+                    notice=reservation["notice"],
+                    price=reservation["price"],
+                    price_paid=reservation["price-paid"],
+                    prepayment=reservation["prepayment"],
+                    prepayment_paid=reservation["prepayment-paid"],
+                    deposit=reservation["deposit"],
+                    deposit_paid=reservation["deposit-paid"],
+                    language=reservation["language"],
+                    guest_app_url=reservation["guest-app-url"],
+                    is_blocked_booking=reservation["is-blocked-booking"],
+                    guest_id=reservation["guestId"],
+                )
+        except Exception as e:
+            print(e)
 
     return render(request, "management/apartments.html")
 

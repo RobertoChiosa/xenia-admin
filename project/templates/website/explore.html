@@ -1,4 +1,4 @@
-{% extends 'website/base.html' %}
+{% extends 'website/../base.html' %}
 {% load static %}
 
 {% block title %}Home - My Django App{% endblock %}
@@ -17,34 +17,34 @@
                 unforgettable.</p>
         </div>
     </div>
-    <div class="container text-center">
-        <div id="apartmentIframeAll">
-            <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
-            <script>BookingToolIframe.initialize({
-                "url": "https://login.smoobu.com/it/booking-tool/iframe/46106",
-                "baseUrl": "https://login.smoobu.com",
-                "target": "#apartmentIframeAll"
-            })</script>
-        </div>
-    </div>
-    <div class="container">
-        <h4 class="text-muted">All properties available</h4>
-        <hr>
-        <div class="row">
-            {% block vertical %}
-                {% include 'website/card_vertical.html' %}
-            {% endblock %}
-            {% block vertical1 %}
-                {% include 'website/card_vertical.html' %}
-            {% endblock %}
-            {% block vertical2 %}
-                {% include 'website/card_vertical.html' %}
-            {% endblock %}
-            {% block vertical4 %}
-                {% include 'website/card_vertical.html' %}
-            {% endblock %}
-        </div>
-    </div>
+{#    <div class="container text-center">#}
+{#        <div id="apartmentIframeAll">#}
+{#            <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>#}
+{#            <script>BookingToolIframe.initialize({#}
+{#                "url": "https://login.smoobu.com/it/booking-tool/iframe/46106",#}
+{#                "baseUrl": "https://login.smoobu.com",#}
+{#                "target": "#apartmentIframeAll"#}
+{#            })</script>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="container">#}
+{#        <h4 class="text-muted">All properties available</h4>#}
+{#        <hr>#}
+{#        <div class="row">#}
+{#            {% block vertical %}#}
+{#                {% include 'website/card_vertical.html' %}#}
+{#            {% endblock %}#}
+{#            {% block vertical1 %}#}
+{#                {% include 'website/card_vertical.html' %}#}
+{#            {% endblock %}#}
+{#            {% block vertical2 %}#}
+{#                {% include 'website/card_vertical.html' %}#}
+{#            {% endblock %}#}
+{#            {% block vertical4 %}#}
+{#                {% include 'website/card_vertical.html' %}#}
+{#            {% endblock %}#}
+{#        </div>#}
+{#    </div>#}
     {% block footer %}
         {% include 'website/footer_light.html' %}
     {% endblock %}

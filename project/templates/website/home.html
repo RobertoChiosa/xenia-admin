@@ -1,4 +1,4 @@
-{% extends 'website/base.html' %}
+{% extends 'website/../base.html' %}
 
 {% block title %}Home - My Django App{% endblock %}
 
@@ -13,14 +13,14 @@
             <p class="lead text-muted">Offering the best hospitality for stort term rentals</p>
 
 
-            <div id="apartmentIframe200124">
-                <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
-                <script>BookingToolIframe.initialize({
-                    "url": "https://login.smoobu.com/it/booking-tool/iframe/46106/200124",
-                    "baseUrl": "https://login.smoobu.com",
-                    "target": "#apartmentIframe200124"
-                })</script>
-            </div>
+{#            <div id="apartmentIframe200124">#}
+{#                <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>#}
+{#                <script>BookingToolIframe.initialize({#}
+{#                    "url": "https://login.smoobu.com/it/booking-tool/iframe/46106/200124",#}
+{#                    "baseUrl": "https://login.smoobu.com",#}
+{#                    "target": "#apartmentIframe200124"#}
+{#                })</script>#}
+{#            </div>#}
 
             {#            {% block availability %}#}
 {#                {% include 'website/availability.html' %}#}
@@ -28,13 +28,13 @@
         </div>
     </div>
 
-    <div class="container">
-
-        <h4>Recently Added</h4>
-        {% block recently_added %}
-            {% include 'website/card_horizontal.html' %}
-        {% endblock %}
-    </div>
+{#    <div class="container">#}
+{##}
+{#        <h4>Recently Added</h4>#}
+{#        {% block recently_added %}#}
+{#            {% include 'website/card_horizontal.html' %}#}
+{#        {% endblock %}#}
+{#    </div>#}
     {% block footer %}
         {% include 'website/footer.html' %}
     {% endblock %}

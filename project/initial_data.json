@@ -1,0 +1,858 @@
+[
+  {
+    "model": "management.property",
+    "pk": 1,
+    "fields": {
+      "smoobu_id": 200124,
+      "booking_id": null,
+      "name": "A casa di Chiara e Marina",
+      "street": "Via Francesco Petrarca, 101",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.926433,
+      "longitude": 10.5225864,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 2,
+    "fields": {
+      "smoobu_id": 890299,
+      "booking_id": null,
+      "name": "Al mare da Alfred and Cate",
+      "street": "Via Cristoforo Colombo, 6",
+      "zip": "57025",
+      "city": "Piombino",
+      "country": "Italy",
+      "latitude": 42.9255743,
+      "longitude": 10.5317974,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 3,
+    "fields": {
+      "smoobu_id": 1294564,
+      "booking_id": null,
+      "name": "Appartamento Belvedere",
+      "street": "Via Padre Giustino Senni, 6",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9237316,
+      "longitude": 10.5226831,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 4,
+    "fields": {
+      "smoobu_id": 2111734,
+      "booking_id": null,
+      "name": "Appartamento Il Paduletto",
+      "street": "Località Paduletto 1/15",
+      "zip": "57025",
+      "city": "Piombino",
+      "country": "Italy",
+      "latitude": 42.9705084,
+      "longitude": 10.6443033,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 5,
+    "fields": {
+      "smoobu_id": 1617607,
+      "booking_id": null,
+      "name": "Appartamento Loggiato",
+      "street": "Via Aurelia Nord, 67",
+      "zip": "57021",
+      "city": "Lumiere, Campiglia Marittima (LI)",
+      "country": "Italy",
+      "latitude": 43.0470431,
+      "longitude": 10.579282,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 6,
+    "fields": {
+      "smoobu_id": 1617601,
+      "booking_id": null,
+      "name": "Appartamento Salice",
+      "street": "Via Aurelia Nord, 67",
+      "zip": "57021",
+      "city": "Lumiere, Campiglia Marittima (LI)",
+      "country": "Italy",
+      "latitude": 43.0470431,
+      "longitude": 10.579282,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 7,
+    "fields": {
+      "smoobu_id": 1933082,
+      "booking_id": null,
+      "name": "Appartamento Sirena",
+      "street": "Largo Calamandrei, 8",
+      "zip": "57025",
+      "city": "Piombino",
+      "country": "Italy",
+      "latitude": 42.928905,
+      "longitude": 10.5205756,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 8,
+    "fields": {
+      "smoobu_id": 510975,
+      "booking_id": null,
+      "name": "Bilocale sul mare al Castello",
+      "street": "Viale del Popolo 19",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9215507,
+      "longitude": 10.5307151,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 9,
+    "fields": {
+      "smoobu_id": 1692778,
+      "booking_id": null,
+      "name": "Brezza Marina",
+      "street": "Via Trento e Trieste 53",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9272677,
+      "longitude": 10.5210386,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 10,
+    "fields": {
+      "smoobu_id": 1618558,
+      "booking_id": null,
+      "name": "Casa Azzurra",
+      "street": "Via Nazario Sauro, 8",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9259917,
+      "longitude": 10.5222393,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 11,
+    "fields": {
+      "smoobu_id": 1910315,
+      "booking_id": null,
+      "name": "Casa Blu",
+      "street": "Corso Vittorio Emanuele II n° 15",
+      "zip": "57025",
+      "city": "Piombino",
+      "country": "Italy",
+      "latitude": 42.9219544,
+      "longitude": 10.5265942,
+      "time_zone": null
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 12,
+    "fields": {
+      "smoobu_id": 1749686,
+      "booking_id": null,
+      "name": "Casa Domi",
+      "street": "Corso Vittorio Emanuele II n.21",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9220872,
+      "longitude": 10.5266536,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 13,
+    "fields": {
+      "smoobu_id": 1618561,
+      "booking_id": null,
+      "name": "Casa Francesca",
+      "street": "Via Edmondo De Amicis 47",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9253549,
+      "longitude": 10.5238458,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 14,
+    "fields": {
+      "smoobu_id": 1294570,
+      "booking_id": null,
+      "name": "Casa San Michele",
+      "street": "Via San Michele, 8",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9220678,
+      "longitude": 10.527557,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 15,
+    "fields": {
+      "smoobu_id": 153873,
+      "booking_id": null,
+      "name": "Casale Falcone - bilocale",
+      "street": "Via San Quirico, 5/3",
+      "zip": "57025",
+      "city": "Piombino",
+      "country": "Italy",
+      "latitude": 42.9401885,
+      "longitude": 10.503908,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 16,
+    "fields": {
+      "smoobu_id": 847036,
+      "booking_id": null,
+      "name": "Casale Falcone - trilocale",
+      "street": "Via San Quirico, 5/3",
+      "zip": "57025",
+      "city": "Piombino",
+      "country": "Italy",
+      "latitude": 42.9401885,
+      "longitude": 10.503908,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 17,
+    "fields": {
+      "smoobu_id": 1633468,
+      "booking_id": null,
+      "name": "Casale La Bandita - bilocale",
+      "street": "Via di Bandita 7",
+      "zip": "57021",
+      "city": "Campiglia Marittima (LI)",
+      "country": "Italy",
+      "latitude": 43.0286169,
+      "longitude": 10.635897,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 18,
+    "fields": {
+      "smoobu_id": 1102639,
+      "booking_id": null,
+      "name": "Foresteria Montepitti",
+      "street": "Via delle Piagge, 8",
+      "zip": "57021",
+      "city": "Campiglia Marittima",
+      "country": "Italy",
+      "latitude": 43.0496221,
+      "longitude": 10.636193,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 19,
+    "fields": {
+      "smoobu_id": 1683415,
+      "booking_id": null,
+      "name": "Ghiacci Vecchi - Bilocale BC",
+      "street": "Via dei Granai 29",
+      "zip": "57021",
+      "city": "Venturina Terme (LI)",
+      "country": "Italy",
+      "latitude": 43.0230416,
+      "longitude": 10.5522461,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 20,
+    "fields": {
+      "smoobu_id": 1683418,
+      "booking_id": null,
+      "name": "Ghiacci Vecchi - Trilocale TC",
+      "street": "Via dei Granai 29",
+      "zip": "57021",
+      "city": "Venturina Terme (LI)",
+      "country": "Italy",
+      "latitude": 43.0230416,
+      "longitude": 10.5522461,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 21,
+    "fields": {
+      "smoobu_id": 762426,
+      "booking_id": null,
+      "name": "Il Giardino di Revo",
+      "street": "Strada Provinciale delle Caldanelle, 4",
+      "zip": "57021",
+      "city": "Venturina Terme (LI)",
+      "country": "Italy",
+      "latitude": 43.037636,
+      "longitude": 10.5830812,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 22,
+    "fields": {
+      "smoobu_id": 1716839,
+      "booking_id": null,
+      "name": "In viaggio con Pippo",
+      "street": "Via Generale Tellini, 29",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9260131,
+      "longitude": 10.527755,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 23,
+    "fields": {
+      "smoobu_id": 2090794,
+      "booking_id": null,
+      "name": "La Bouganville",
+      "street": "Avenida Maritima 43",
+      "zip": "38683",
+      "city": "Puerto de Santiago",
+      "country": "Spain",
+      "latitude": 28.2361956,
+      "longitude": -16.8411272,
+      "time_zone": "Europe/London"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 24,
+    "fields": {
+      "smoobu_id": 1697560,
+      "booking_id": null,
+      "name": "La Cala del Nostromo",
+      "street": "Via Dalmazia 2/E",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9258537,
+      "longitude": 10.524849,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 25,
+    "fields": {
+      "smoobu_id": 1642426,
+      "booking_id": null,
+      "name": "La casa del Lubra",
+      "street": "Viale Regina Margherita, 35",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9246588,
+      "longitude": 10.5344371,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 26,
+    "fields": {
+      "smoobu_id": 1406885,
+      "booking_id": null,
+      "name": "La casa di Angelo",
+      "street": "Via Carlo Pisacane, 76",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9262886,
+      "longitude": 10.5306022,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 27,
+    "fields": {
+      "smoobu_id": 1116925,
+      "booking_id": null,
+      "name": "La casa di Bea",
+      "street": "Via del Fosso, 32",
+      "zip": "57025",
+      "city": "Piombino",
+      "country": "Italy",
+      "latitude": 42.9237394,
+      "longitude": 10.5267327,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 28,
+    "fields": {
+      "smoobu_id": 1280135,
+      "booking_id": null,
+      "name": "La casa di Mauro",
+      "street": "Viale Regina Margherita, 25",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.92462,
+      "longitude": 10.5335552,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 29,
+    "fields": {
+      "smoobu_id": 1701395,
+      "booking_id": null,
+      "name": "La casa vacanze di Bea",
+      "street": "Via Trento 6",
+      "zip": "57021",
+      "city": "Venturina Terme (LI)",
+      "country": "Italy",
+      "latitude": 43.0304007,
+      "longitude": 10.601322,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 30,
+    "fields": {
+      "smoobu_id": 1738526,
+      "booking_id": null,
+      "name": "La Casetta",
+      "street": "Via degli Affitti 4/A",
+      "zip": "57021",
+      "city": "Campiglia Marittima",
+      "country": "Italy",
+      "latitude": 43.0167583,
+      "longitude": 10.6158201,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 31,
+    "fields": {
+      "smoobu_id": 506418,
+      "booking_id": null,
+      "name": "La casetta dei Grilli",
+      "street": "Via Lazio 12",
+      "zip": "57021",
+      "city": "Venturina Terme",
+      "country": "Italy",
+      "latitude": 43.0194631,
+      "longitude": 10.5975954,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 32,
+    "fields": {
+      "smoobu_id": 1133965,
+      "booking_id": null,
+      "name": "Latomare",
+      "street": "Via Indipendenza 23",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9265243,
+      "longitude": 10.5241565,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 33,
+    "fields": {
+      "smoobu_id": 1989500,
+      "booking_id": null,
+      "name": "Los Angeles",
+      "street": "Calle Los Angeles 26, PORTAL 4",
+      "zip": "38683",
+      "city": "Puerto de Santiago",
+      "country": "Spain",
+      "latitude": 28.237036,
+      "longitude": -16.840943,
+      "time_zone": "Europe/London"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 34,
+    "fields": {
+      "smoobu_id": 2066263,
+      "booking_id": null,
+      "name": "Monolocale IRIS con piscina",
+      "street": "Via Suveretana, 5",
+      "zip": "57021",
+      "city": "Venturina Terme fraz. Campiglia M.ma",
+      "country": "Italy",
+      "latitude": 43.0360384,
+      "longitude": 10.6127667,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 35,
+    "fields": {
+      "smoobu_id": 443346,
+      "booking_id": null,
+      "name": "Onda Blu",
+      "street": "Via Giuseppe Garibaldi, 35",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.92304,
+      "longitude": 10.5258369,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 36,
+    "fields": {
+      "smoobu_id": 1173238,
+      "booking_id": null,
+      "name": "Paradisa28 Amalfi",
+      "street": "Via Paradisa 28",
+      "zip": "56124",
+      "city": "Pisa",
+      "country": "Italy",
+      "latitude": 43.710199,
+      "longitude": 10.43747,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 37,
+    "fields": {
+      "smoobu_id": 1397435,
+      "booking_id": null,
+      "name": "Paradisa28 Genova",
+      "street": "Via Paradisa 28",
+      "zip": "56124",
+      "city": "Pisa",
+      "country": "Italy",
+      "latitude": 43.710199,
+      "longitude": 10.43747,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 38,
+    "fields": {
+      "smoobu_id": 1891181,
+      "booking_id": null,
+      "name": "Paradisa30",
+      "street": "Via Paradisa 30",
+      "zip": "56100",
+      "city": "Pisa",
+      "country": "Italy",
+      "latitude": 43.7101585,
+      "longitude": 10.4371756,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 39,
+    "fields": {
+      "smoobu_id": 2066353,
+      "booking_id": null,
+      "name": "Quadrilocale Rosa con piscina",
+      "street": "Via Suveretana, 5",
+      "zip": "57021",
+      "city": "Venturina Terme fraz. Campiglia M.ma",
+      "country": "Italy",
+      "latitude": 43.0360384,
+      "longitude": 10.6127667,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 40,
+    "fields": {
+      "smoobu_id": 2066266,
+      "booking_id": null,
+      "name": "Quadrilocale Viola con piscina",
+      "street": "Via Suveretana, 5",
+      "zip": "57021",
+      "city": "Venturina Terme fraz. Campiglia M.ma",
+      "country": "Italy",
+      "latitude": 43.0360384,
+      "longitude": 10.6127667,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 41,
+    "fields": {
+      "smoobu_id": 260851,
+      "booking_id": null,
+      "name": "Spiaggia de'Frati",
+      "street": "Via Giovanni Boccaccio 12",
+      "zip": "57025",
+      "city": "Piombino (LI)",
+      "country": "Italy",
+      "latitude": 42.9259569,
+      "longitude": 10.520317,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 42,
+    "fields": {
+      "smoobu_id": 1982519,
+      "booking_id": null,
+      "name": "The Sea Home",
+      "street": "Via Dalmazia, 24",
+      "zip": "57025",
+      "city": "Piombino",
+      "country": "Italy",
+      "latitude": 42.92594,
+      "longitude": 10.52356,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 43,
+    "fields": {
+      "smoobu_id": 1644670,
+      "booking_id": null,
+      "name": "Tosca Apartment 1",
+      "street": "Via Don Minzoni, 84",
+      "zip": "57028",
+      "city": "Suvereto (LI)",
+      "country": "Italy",
+      "latitude": 43.0794718,
+      "longitude": 10.6769482,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 44,
+    "fields": {
+      "smoobu_id": 1645597,
+      "booking_id": null,
+      "name": "Tosca Apartment 2",
+      "street": "Via Don Minzoni, 80",
+      "zip": "57028",
+      "city": "Suvereto",
+      "country": "Italy",
+      "latitude": 43.079538,
+      "longitude": 10.6769853,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 45,
+    "fields": {
+      "smoobu_id": 2122051,
+      "booking_id": null,
+      "name": "Tosca Apartment 3",
+      "street": "Via Belvedere 2",
+      "zip": "57028",
+      "city": "Suvereto",
+      "country": "Italy",
+      "latitude": 43.0797442,
+      "longitude": 10.6766704,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 46,
+    "fields": {
+      "smoobu_id": 2066233,
+      "booking_id": null,
+      "name": "Trilocale Erica con piscina",
+      "street": "Via Suveretana, 5",
+      "zip": "57021",
+      "city": "Venturina Terme fraz. Campiglia M.ma",
+      "country": "Italy",
+      "latitude": 43.0360384,
+      "longitude": 10.6127667,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 47,
+    "fields": {
+      "smoobu_id": 1114810,
+      "booking_id": null,
+      "name": "Tuscan Estate",
+      "street": "Via Edmondo De Amicis 37",
+      "zip": "57025",
+      "city": "Piombino",
+      "country": "Italy",
+      "latitude": 42.9253474,
+      "longitude": 10.5243843,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 48,
+    "fields": {
+      "smoobu_id": 762438,
+      "booking_id": null,
+      "name": "Villa Nara",
+      "street": "Strada Provinciale delle Caldanelle, 4",
+      "zip": "57021",
+      "city": "Venturina Terme (LI)",
+      "country": "Italy",
+      "latitude": 43.037636,
+      "longitude": 10.5830812,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.property",
+    "pk": 49,
+    "fields": {
+      "smoobu_id": 1899614,
+      "booking_id": null,
+      "name": "Villa Sorriso",
+      "street": "Via Zaccani 2",
+      "zip": "98039",
+      "city": "Taormina",
+      "country": "Italy",
+      "latitude": 37.862421,
+      "longitude": 15.2924663,
+      "time_zone": "Europe/Rome"
+    }
+  },
+  {
+    "model": "management.cadastraldata",
+    "pk": 1,
+    "fields": {
+      "section": null,
+      "sheet": "78",
+      "particle": "666",
+      "subparticle": "9",
+      "category": "A/2",
+      "cadastrial_class": "1",
+      "consistency": "4 vani",
+      "surface": null,
+      "rent": null,
+      "code_regional": null,
+      "code_national": null,
+      "file": "CadastralData/1/visura_Visura_Catastale_CaporaliNadia.pdf"
+    }
+  },
+  {
+    "model": "management.cadastraldata",
+    "pk": 2,
+    "fields": {
+      "section": null,
+      "sheet": "80",
+      "particle": "227",
+      "subparticle": "629",
+      "category": "C/6",
+      "cadastrial_class": "6",
+      "consistency": "11 m²",
+      "surface": "Totale: 13 m²",
+      "rent": "Euro 63,63",
+      "code_regional": null,
+      "code_national": null,
+      "file": "CadastralData/2/visura_VIsura_Immobile_20_08_2021.pdf"
+    }
+  },
+  {
+    "model": "management.cadastraldata",
+    "pk": 49,
+    "fields": {
+      "section": "NA",
+      "sheet": null,
+      "particle": null,
+      "subparticle": null,
+      "category": null,
+      "cadastrial_class": null,
+      "consistency": null,
+      "surface": null,
+      "rent": null,
+      "code_regional": null,
+      "code_national": null,
+      "file": ""
+    }
+  },
+  {
+    "model": "management.host",
+    "pk": 1,
+    "fields": {
+      "name": null,
+      "surname": null,
+      "birth_date": null,
+      "birth_place": null,
+      "citizenship": null,
+      "fiscal_code": null,
+      "residence_address": null,
+      "id_card_front": "",
+      "id_card_back": "",
+      "email": null,
+      "property": [
+        5
+      ]
+    }
+  }
