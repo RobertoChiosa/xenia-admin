@@ -40,11 +40,11 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    # "unfold.contrib.import_export",
-    # "unfold",
-    # "unfold.contrib.filters",
-    # "unfold.contrib.forms",
-    # "unfold.contrib.simple_history",
+    "unfold.contrib.import_export",
+    "unfold",
+    "unfold.contrib.filters",
+    "unfold.contrib.forms",
+    "unfold.contrib.simple_history",
     "sass_processor",  # Custom scss variables bootstrap override
     "modeltranslation",
     "management.apps.ManagementConfig",

@@ -66,6 +66,13 @@ class Property(models.Model):
     booking_id = models.IntegerField(
         _("id booking"), null=True, blank=True, unique=True
     )
+    host = models.ForeignKey(
+        "Host",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="properties",
+    )
     name = models.CharField(_("nome"), max_length=100, null=True, blank=True)
     street = models.CharField(_("via"), max_length=100, null=True, blank=True)
     zip = models.CharField(_("cap"), max_length=10, null=True, blank=True)
@@ -78,6 +85,10 @@ class Property(models.Model):
     @property
     def smoobu_edit_link(self):
         return f"https://login.smoobu.com/it/settings/apartments/edit/{self.smoobu_id}"
+
+    @property
+    def booking_edit_link(self):
+        return f"https://admin.booking.com/hotel/hoteladmin/extranet_ng/manage/home.html?hotel_id={self.booking_id}&lang=it"
 
     def __str__(self):
         return self.name or "Senza Nome"
@@ -152,10 +163,9 @@ class Host(models.Model):
         upload_to=host_id_card_upload_directory, null=True, blank=True
     )
     email = models.EmailField(null=True, blank=True)
-    property = models.ManyToManyField(Property, blank=True)
 
     def __str__(self):
-        return self.name or "Senza Nome"
+        return f"{self.name} {self.surname}"
 
     class Meta:
         verbose_name = _("Host")

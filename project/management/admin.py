@@ -4,23 +4,138 @@
 
 # Third party imports
 from django.contrib import admin
+from django.core.checks import messages
+from django.http import HttpResponseRedirect
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
+from unfold.admin import ModelAdmin, StackedInline
+from unfold.decorators import display, action
 
 from .models import CadastralData, Host, Property, Reservation
 
 
-class HostAdmin(admin.ModelAdmin):
-    search_fields = ["name"]
-    list_display = ["name", "surname", "email", "fiscal_code"]
-    fieldsets = [
+class HostInline(StackedInline):
+    model = Host
+    extra = 1
+    tab = True
+    classes = ["wide"]
+
+
+class CadastralDataInline(StackedInline):
+    model = CadastralData
+    extra = 1
+    tab = True
+    classes = ["wide"]
+    fieldsets = (
         (
             None,
             {
-                "fields": ["property"],
-                # "classes": ["collapse"]
+                "fields": [
+                    (
+                        "code_regional",
+                        "code_national",
+                    ),
+                ]
             },
         ),
+        (
+            None,
+            {
+                "fields": [
+                    (
+                        "section",
+                        "sheet",
+                        "particle",
+                        "subparticle",
+                    ),
+                    (
+                        "category",
+                        "consistency",
+                        "surface",
+                        "rent",
+                    ),
+                    "file",
+                ],
+            },
+        ),
+    )
+
+
+class CadastralDataAdmin(ModelAdmin):
+    list_display = [
+        "property",
+        "code_regional",
+        "code_national",
+        # "section",
+        # "sheet",
+        # "particle",
+        # "subparticle",
+        # "category",
+        # "consistency",
+        # "surface",
+        # "rent",
+        "file",
+    ]
+    search_fields = ["property", "code_regional", "code_national"]
+    fieldsets = (
+        (
+            "Anagrafica",
+            {
+                "fields": [
+                    "property",
+                    (
+                        "code_regional",
+                        "code_national",
+                    ),
+                ]
+            },
+        ),
+        (
+            "Dati Catastali",
+            {
+                "fields": [
+                    (
+                        "section",
+                        "sheet",
+                        "particle",
+                        "subparticle",
+                    ),
+                    (
+                        "category",
+                        "consistency",
+                        "surface",
+                        "rent",
+                    ),
+                    "file",
+                ],
+            },
+        ),
+    )
+
+
+class PropertyInline(StackedInline):
+    model = Property
+    extra = 1
+    tab = True
+    classes = ["wide"]
+    readonly_fields = [
+        "smoobu_id",
+        "name",
+        "street",
+        "zip",
+        "city",
+        "country",
+        "latitude",
+        "longitude",
+        "time_zone",
+    ]
+
+
+class HostAdmin(ModelAdmin):
+    search_fields = ["name"]
+    list_display = ["name", "surname", "email", "fiscal_code"]
+    inlines = [PropertyInline]
+    fieldsets = [
         (
             _("Anagrafica"),
             {
@@ -47,38 +162,10 @@ class HostAdmin(admin.ModelAdmin):
     ]
 
 
-class CadastralDataInline(admin.StackedInline):
-    model = CadastralData
-    extra = 1
-    classes = ["wide"]
-
-
-class CadastralDataAdmin(admin.ModelAdmin):
-    list_display = [
-        "property",
-        "code_regional",
-        "code_national",
-        # "section",
-        # "sheet",
-        # "particle",
-        # "subparticle",
-        # "category",
-        # "consistency",
-        # "surface",
-        # "rent",
-        "file",
-    ]
-    search_fields = ["property", "code_regional", "code_national"]
-
-
 # todo export excel
-class PropertyAdmin(admin.ModelAdmin):
+class PropertyAdmin(ModelAdmin):
     inlines = [CadastralDataInline]
-    list_display = [
-        "name",
-        "street",
-        "city",
-    ]
+    list_display = ["name", "street", "city"]
 
     search_fields = [
         "name",
@@ -99,57 +186,72 @@ class PropertyAdmin(admin.ModelAdmin):
         "longitude",
         "time_zone",
     ]
+
     fieldsets = [
         (
-            "ANAGRAFICA",
+            _("Anagrafica"),
             {
                 "fields": [
-                    "smoobu_id",
                     "name",
-                    "street",
-                    "zip",
-                    "city",
-                    "country",
-                    "latitude",
-                    "longitude",
-                    "time_zone",
+                    (
+                        "street",
+                        "zip",
+                        "city",
+                        "country",
+                    ),
+                    (
+                        "latitude",
+                        "longitude",
+                        "time_zone",
+                    ),
                 ],
-                "classes": ["wide"],
+                # "classes": ["collapse"]
+            },
+        ),
+        (
+            _("Portali"),
+            {
+                "fields": [
+                    (
+                        "booking_id",
+                        "smoobu_id",
+                    ),
+                ],
+                # "classes": ["collapse"]
             },
         ),
     ]
 
-    @admin.action(description="Modifica in Smoobu")
+    @display(description=_("Booking edit"), ordering="booking_edit_link")
+    def display_booking_edit_link(self, instance: Property):
+        return instance.booking_edit_link
+
+    @action(description="Modifica in Smoobu")
     def edit_in_smoobu(self, request, queryset):
         """
-        Modifica in smoobu
-        :param request:
-        :param queryset:
-        :return:
+        Redirects to the Smoobu edit link for the selected object.
         """
-        links = []
-        for obj in queryset:
-            if hasattr(obj, "smoobu_edit_link") and obj.smoobu_edit_link:
-                links.append(
-                    f'<a href="{obj.smoobu_edit_link}" target="_blank">{obj.name}</a>'
-                )
-            else:
-                self.message_user(
-                    request,
-                    f"{obj} does not have a valid Smoobu edit link.",
-                )
-
-        if links:
-            # Use `mark_safe` to allow HTML in the message
+        if queryset.count() > 1:
             self.message_user(
                 request,
-                mark_safe(f"Edit links: {' | '.join(links)}"),
+                _("You can only edit one property at a time"),
+                level=messages.ERROR,
             )
+            return
+        property = queryset.first()
+        if property.smoobu_id is None:
+            self.message_user(
+                request,
+                _("This property is not linked to Smoobu"),
+                level=messages.ERROR,
+            )
+            return
+        return HttpResponseRedirect(property.smoobu_edit_link)
 
-    actions = ["edit_in_smoobu"]
+    actions_detail = ["edit_in_smoobu"]
 
 
-class ReservationAdmin(admin.ModelAdmin):
+class ReservationAdmin(ModelAdmin):
     list_display = [
         "property",
         # "id",
@@ -224,7 +326,6 @@ class ReservationAdmin(admin.ModelAdmin):
                 )
             },
         ),
-        ("Altro", {"fields": ("is_blocked_booking", "created_at", "modified_at")}),
     )
 
     readonly_fields = [
@@ -233,8 +334,6 @@ class ReservationAdmin(admin.ModelAdmin):
         "type",
         "arrival",
         "departure",
-        "created_at",
-        "modified_at",
         # "property_smoobu_id",
         "channel",
         "guest_name",
